@@ -49,7 +49,7 @@ This project implements Anthropic's **Model Context Protocol** - a standardized 
 
 **Flight Search Tool with Async I/O**:
 
-**Booking Link Generation** (Airline-Specific URLs):
+**Booking Link Generation** (Airline-Specific URLs)
 
 
 ### 🎯 Intelligent Prompt Engineering
@@ -71,7 +71,7 @@ CRITICAL RESPONSE GUIDELINES:
 
 ### 🎨 Production-Grade UI with Gradio 4.20
 
-**HTML5 Date Picker via JavaScript Injection** (since gr.DateTime unavailable in 4.20):
+**HTML5 Date Picker via JavaScript Injection** (since gr.DateTime unavailable in 4.20)
 
 
 
