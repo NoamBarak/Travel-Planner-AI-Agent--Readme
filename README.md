@@ -6,6 +6,7 @@
 ![Claude](https://img.shields.io/badge/Claude-Sonnet%204.5-purple.svg)
 ![MCP](https://img.shields.io/badge/MCP-Enabled-green.svg)
 ![Gradio](https://img.shields.io/badge/Gradio-4.20-orange.svg)
+<img width="661" height="808" alt="image" src="https://github.com/user-attachments/assets/4665c4bf-6856-48d3-a3a7-6496a6316eee" />
 
 ---
 
