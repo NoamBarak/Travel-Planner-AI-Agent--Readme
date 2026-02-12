@@ -1,10 +1,9 @@
-# AI Trip Planning Assistant with Model Context Protocol (MCP) ✈️
+# AI Trip Planning Assistant✈️
 
 > **Enterprise-grade agentic AI system** leveraging Anthropic's Model Context Protocol for real-time tool orchestration, stateful conversation management, and production-ready travel planning capabilities.
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Claude](https://img.shields.io/badge/Claude-Sonnet%204.5-purple.svg)
-![MCP](https://img.shields.io/badge/MCP-Enabled-green.svg)
 ![Gradio](https://img.shields.io/badge/Gradio-4.20-orange.svg)
 <img width="661" height="808" alt="image" src="https://github.com/user-attachments/assets/4665c4bf-6856-48d3-a3a7-6496a6316eee" />
 
@@ -13,7 +12,6 @@
 ## Executive Summary
 
 This project demonstrates **production-grade AI engineering** through:
-- ✅ **Model Context Protocol (MCP) Implementation** - Extensible tool orchestration following Anthropic's standardized framework
 - ✅ **Parallel Tool Execution** - Advanced handling of Claude's multi-tool calling with proper result batching
 - ✅ **Agentic Behavior** - Autonomous decision-making with real-time API integration (Amadeus, 400+ airlines)
 - ✅ **State Management** - Stateful multi-turn conversations with memory persistence
@@ -24,10 +22,6 @@ This project demonstrates **production-grade AI engineering** through:
 ---
 
 ## Architecture & Technical Highlights
-
-### 🔧 Model Context Protocol (MCP) Implementation
-
-This project implements Anthropic's **Model Context Protocol** - a standardized approach for AI models to interact with external tools and data sources.
 
 ### ⚡ Advanced Tool Orchestration - Parallel Execution
 
@@ -78,28 +72,22 @@ CRITICAL RESPONSE GUIDELINES:
 
 ## AI Engineering Concepts Demonstrated 👩🏻‍💻
 
-### 1. Model Context Protocol (MCP)
-- ✅ Standardized tool definition format
-- ✅ Type-safe schema validation
-- ✅ Extensible tool registry pattern
-- ✅ Async execution with proper error handling
-
-### 2. Agentic Behavior
+### Agentic Behavior
 - ✅ Autonomous decision-making (when to search flexible dates)
 - ✅ Multi-step reasoning (search → compare → recommend)
 - ✅ Tool chaining (multiple API calls in sequence)
 
-### 3. Retrieval-Augmented Generation (RAG)
+### Retrieval-Augmented Generation (RAG)
 - ✅ Real-time data retrieval (flight prices)
 - ✅ Structured output formatting
 - ✅ Fact-based responses (no hallucination)
 
-### 4. Prompt Optimization
+### Prompt Optimization
 - ✅ Chain-of-thought reasoning
 - ✅ Conditional behavior (flexible vs direct search)
 - ✅ Output formatting constraints
 
-### 5. Error Handling & Resilience
+### Error Handling & Resilience
 - ✅ Graceful API failures
 - ✅ Type validation
 - ✅ Retry mechanisms (implicit in Anthropic SDK)
@@ -107,58 +95,13 @@ CRITICAL RESPONSE GUIDELINES:
 ---
 
 
-## System Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     Gradio UI Layer                          │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
-│  │ Quick Plan  │  │ Chat Mode   │  │Flight Search│         │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘         │
-└─────────┼─────────────────┼─────────────────┼───────────────┘
-          │                 │                 │
-          └─────────────────┴─────────────────┘
-                            │
-          ┌─────────────────▼─────────────────┐
-          │     Message Handler (Core)        │
-          │  • Conversation Management        │
-          │  • Tool Orchestration             │
-          │  • Response Processing            │
-          └─────────────────┬─────────────────┘
-                            │
-          ┌─────────────────▼─────────────────┐
-          │  Anthropic Claude API (Sonnet 4.5)│
-          │  • Tool Use Detection             │
-          │  • Parallel Tool Calling          │
-          │  • Natural Language Understanding │
-          └─────────────────┬─────────────────┘
-                            │
-          ┌─────────────────▼─────────────────┐
-          │       Tool Registry (MCP)         │
-          │  ┌──────────────────────────┐     │
-          │  │  FlightSearchTool        │     │
-          │  │  • Amadeus API Client    │     │
-          │  │  • Async Execution       │     │
-          │  │  • Booking Link Gen      │     │
-          │  └──────────────────────────┘     │
-          │  [Future: HotelTool, WeatherTool] │
-          └───────────────────────────────────┘
-                            │
-          ┌─────────────────▼─────────────────┐
-          │   External APIs & Services        │
-          │  • Amadeus Travel Platform        │
-          │  • Airline Booking Systems        │
-          └───────────────────────────────────┘
-```
-
----
 
 ## Technical Stack
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
 | AI Model | Claude Sonnet 4.5 | Reasoning, tool use, conversation |
-| Protocol | Model Context Protocol (MCP) | Standardized tool integration |
+| Protocol | Standardized tool integration |
 | Backend | Python 3.8+, Anthropic SDK | Application logic, API client |
 | Async I/O | asyncio, run_in_executor | Non-blocking tool execution |
 | UI Framework | Gradio 4.20 | Rapid prototyping, event handling |
