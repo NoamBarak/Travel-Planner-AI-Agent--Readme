@@ -1,9 +1,10 @@
 # AI Trip Planning Assistant✈️
 
-> **Enterprise-grade agentic AI system** leveraging Anthropic's Model Context Protocol for real-time tool orchestration, stateful conversation management, and production-ready travel planning capabilities.
+This project showcases **enterprise-grade AI engineering** through an intelligent travel assistant built with Claude Sonnet, LangChain 0.3, and Python.
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Claude](https://img.shields.io/badge/Claude-Sonnet%204.5-purple.svg)
+![LangChain](https://img.shields.io/badge/LangChain-Framework-green.svg)
 ![Gradio](https://img.shields.io/badge/Gradio-4.20-orange.svg)
 <img width="661" height="808" alt="image" src="https://github.com/user-attachments/assets/4665c4bf-6856-48d3-a3a7-6496a6316eee" />
 
@@ -21,111 +22,27 @@ This project demonstrates **production-grade AI engineering** through:
 
 ---
 
-## Architecture & Technical Highlights
+## Key Technical Achievements
 
-### ⚡ Advanced Tool Orchestration - Parallel Execution
+**LangChain Integration**: The core LLM backbone is powered by LangChain's Expression Language (LCEL) — composing prompts, models, and memory using the `|` pipe operator. `RunnableWithMessageHistory` manages stateful multi-turn conversations automatically, replacing manual message list management. MCP tools are bridged into the LangChain pipeline via `StructuredTool` with Pydantic-validated input schemas.
 
-**Challenge**: Claude Sonnet 4.5 can invoke multiple tools simultaneously (parallel tool use), requiring sophisticated result batching to avoid API errors.
+**Agentic Architecture**: The assistant autonomously decides when to invoke the flight search tool, chains multiple API calls together, and performs multi-step reasoning to generate personalized travel itineraries — all driven by Claude's native tool-use capabilities via `bind_tools()`.
 
-**Solution**: Implemented a **while-loop batching pattern** that collects all tool uses, executes them asynchronously, and returns results in a single message.
+**Model Context Protocol (MCP)**: Tools are defined following Anthropic's standardized MCP specification — an abstract `Tool` base class, JSON Schema input definitions, and a singleton `ToolRegistry` for extensible tool management. Adding a new tool (hotels, weather) requires fewer than 30 lines of code.
 
-**Why This Matters**:
-- ❌ **Wrong approach**: Sending each tool result individually → `400 error: tool_use ids were found without tool_result blocks`
-- ✅ **Correct approach**: Batch all results → Claude receives complete context in one message
+**Real-Time Integration**: Leveraging the Amadeus platform, the system accesses live flight pricing across 400+ airlines and generates airline-specific deep-link booking URLs for direct reservations.
 
----
+**Stateful Conversation Memory**: `InMemoryChatMessageHistory` persists typed `HumanMessage` / `AIMessage` objects across turns. History is injected automatically into every prompt via `MessagesPlaceholder`, enabling coherent multi-turn travel planning without any manual state tracking.
 
-### 🧠 Stateful Conversation Management
+## Technology Foundation
 
-**Multi-Turn Memory with Context Persistence**:
+The stack combines Python 3.8+, LangChain 0.3 (LCEL, `langchain-anthropic`, `langchain-core`), and the Anthropic SDK for the AI backbone. Gradio 4.20 powers the multi-tab web UI. `asyncio` with `run_in_executor` ensures non-blocking Amadeus API calls. Pydantic provides type-safe schema validation throughout the tool layer.
 
+## Demonstrated AI Concepts
 
-### 🌐 Real-Time API Integration - Amadeus Travel Platform
+Beyond standard chatbot functionality, this implementation covers agentic behavior (autonomous tool invocation and multi-step reasoning), retrieval-augmented generation (real-time flight data instead of static knowledge), LangChain LCEL chain composition, MCP-based tool orchestration, and resilient async error handling.
 
-**Flight Search Tool with Async I/O**:
-
-**Booking Link Generation** (Airline-Specific URLs)
-
-
-### 🎯 Intelligent Prompt Engineering
-
-**Flexible Date Search with Conditional Tool Use**:
-
-
-**Critical Response Guidelines** (Prompt Engineering for Conciseness):
-
-```python
-CRITICAL RESPONSE GUIDELINES:
-- Keep responses SHORT and CONCISE (3-5 sentences for flight results)
-- For flight searches: List ONLY flight number, time, price, and booking link
-- Be RELIABLE: Only state facts from tool results, never guess or estimate
-- Format flight results as a numbered list with booking links
-```
-
----
-
-### 🎨 Production-Grade UI with Gradio 4.20
-
-**HTML5 Date Picker via JavaScript Injection** (since gr.DateTime unavailable in 4.20)
-
-
-
-## AI Engineering Concepts Demonstrated 👩🏻‍💻
-
-### Agentic Behavior
-- ✅ Autonomous decision-making (when to search flexible dates)
-- ✅ Multi-step reasoning (search → compare → recommend)
-- ✅ Tool chaining (multiple API calls in sequence)
-
-### Retrieval-Augmented Generation (RAG)
-- ✅ Real-time data retrieval (flight prices)
-- ✅ Structured output formatting
-- ✅ Fact-based responses (no hallucination)
-
-### Prompt Optimization
-- ✅ Chain-of-thought reasoning
-- ✅ Conditional behavior (flexible vs direct search)
-- ✅ Output formatting constraints
-
-### Error Handling & Resilience
-- ✅ Graceful API failures
-- ✅ Type validation
-- ✅ Retry mechanisms (implicit in Anthropic SDK)
-
----
-
-
-
-## Technical Stack
-
-| Component | Technology | Purpose |
-|-----------|-----------|---------|
-| AI Model | Claude Sonnet 4.5 | Reasoning, tool use, conversation |
-| Protocol | Standardized tool integration |
-| Backend | Python 3.8+, Anthropic SDK | Application logic, API client |
-| Async I/O | asyncio, run_in_executor | Non-blocking tool execution |
-| UI Framework | Gradio 4.20 | Rapid prototyping, event handling |
-| Flight Data | Amadeus API | Real-time pricing, 400+ airlines |
-| Type Safety | Python type hints | Static analysis, IDE support |
-| Architecture | Clean Architecture | Separation: config/core/tools/ui |
-
----
-
-## Future Enhancements
-
-### Technical Roadmap
-1. **Multi-Modal Integration** - Image analysis for destination recommendations (Claude's vision capabilities)
-2. **Tool Chaining** - Flight search → Hotel search → itinerary generation in single workflow
-3. **Caching Layer** - Redis for flight result caching (reduce API costs)
-4. **Agent Routing** - Multiple specialized agents (flights, hotels, activities) with coordination
-5. **Memory Persistence** - Database storage for conversation history across sessions
-6. **Prompt Caching** - Anthropic's prompt caching for system prompts (reduce costs)
-
-### Business Features
-- **Price Alerts** - Monitor flight prices, notify on drops
-- **Group Travel** - Multi-passenger coordination
-- **Trip Sharing** - Export itineraries as PDFs/calendar events
-
+The architecture is designed for extensibility — future enhancements include multi-modal vision for destination recommendations, Redis caching for flight results, specialized agent routing, and persistent cross-session memory storage.
 ---
 
 ## Contact
